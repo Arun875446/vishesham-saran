@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, Eye, Heart, Share2 } from 'lucide-react';
-import portfolio1 from '@/assets/portfolio-1.jpg';
-import portfolio2 from '@/assets/portfolio-2.jpg';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ChevronLeft, ChevronRight, Eye, Heart, Share2 } from "lucide-react";
+import portfolio1 from "@/assets/portfolio-1.jpg";
+import portfolio2 from "@/assets/portfolio-2.jpg";
 
 interface PortfolioItem {
   id: number;
@@ -15,7 +15,7 @@ interface PortfolioItem {
 
 const Portfolio = () => {
   const navigate = useNavigate();
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 6;
 
@@ -25,32 +25,36 @@ const Portfolio = () => {
       image: portfolio1,
       title: "Romantic Sunset Wedding",
       category: "Wedding",
-      description: "A beautiful sunset ceremony where Vishesham captured the love and joy of this special day with timeless elegance.",
-      tags: ["wedding", "sunset", "romantic", "outdoor"]
+      description:
+        "A beautiful sunset ceremony where Vishesham captured the love and joy of this special day with timeless elegance.",
+      tags: ["wedding", "sunset", "romantic", "outdoor"],
     },
     {
       id: 2,
       image: portfolio2,
       title: "Corporate Event Excellence",
       category: "Event",
-      description: "Professional event photography where Vishesham showcased dynamic corporate gatherings with sophisticated storytelling.",
-      tags: ["corporate", "event", "professional", "business"]
+      description:
+        "Professional event photography where Vishesham showcased dynamic corporate gatherings with sophisticated storytelling.",
+      tags: ["corporate", "event", "professional", "business"],
     },
     {
       id: 3,
       image: `https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=800&h=600&fit=crop`,
       title: "Creative Portrait Session",
       category: "Portrait",
-      description: "Artistic portraiture where Vishesham highlighted personality and character through innovative lighting techniques.",
-      tags: ["portrait", "creative", "studio", "artistic"]
+      description:
+        "Artistic portraiture where Vishesham highlighted personality and character through innovative lighting techniques.",
+      tags: ["portrait", "creative", "studio", "artistic"],
     },
     {
       id: 4,
       image: `https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop`,
       title: "Modern Architecture",
       category: "Commercial",
-      description: "Capturing architectural beauty with dramatic angles and lighting.",
-      tags: ["architecture", "modern", "commercial", "geometric"]
+      description:
+        "Capturing architectural beauty with dramatic angles and lighting.",
+      tags: ["architecture", "modern", "commercial", "geometric"],
     },
     {
       id: 5,
@@ -58,27 +62,36 @@ const Portfolio = () => {
       title: "Nature's Serenity",
       category: "Nature",
       description: "Peaceful landscape photography showcasing natural beauty.",
-      tags: ["nature", "landscape", "peaceful", "outdoor"]
+      tags: ["nature", "landscape", "peaceful", "outdoor"],
     },
     {
       id: 6,
       image: `https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=800&h=600&fit=crop`,
       title: "Vibrant Florals",
       category: "Nature",
-      description: "Macro photography capturing the intricate details of flowers.",
-      tags: ["flowers", "macro", "colorful", "nature"]
-    }
+      description:
+        "Macro photography capturing the intricate details of flowers.",
+      tags: ["flowers", "macro", "colorful", "nature"],
+    },
   ];
 
-  const categories = ['All', 'Wedding', 'Portrait', 'Event', 'Commercial', 'Nature'];
+  const categories = [
+    "All",
+    "Wedding",
+    "Portrait",
+    "Event",
+    "Commercial",
+    "Nature",
+  ];
 
-  const filteredItems = selectedCategory === 'All' 
-    ? portfolioItems 
-    : portfolioItems.filter(item => item.category === selectedCategory);
+  const filteredItems =
+    selectedCategory === "All"
+      ? portfolioItems
+      : portfolioItems.filter((item) => item.category === selectedCategory);
 
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
   const currentItems = filteredItems.slice(
-    currentPage * itemsPerPage, 
+    currentPage * itemsPerPage,
     (currentPage + 1) * itemsPerPage
   );
 
@@ -103,7 +116,9 @@ const Portfolio = () => {
             Our Portfolio
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Explore Vishesham's collection of stunning photography showcasing our artistic vision and technical expertise across diverse styles and moments.
+            Explore Vishesham's collection of stunning photography showcasing
+            our artistic vision and technical expertise across diverse styles
+            and moments.
           </p>
         </div>
 
@@ -118,8 +133,8 @@ const Portfolio = () => {
               }}
               className={`px-6 py-3 rounded-full font-medium transition-smooth ${
                 selectedCategory === category
-                  ? 'bg-gradient-primary text-white shadow-glow'
-                  : 'bg-white hover:bg-secondary text-foreground hover:text-primary-light border border-border'
+                  ? "bg-gradient-primary text-white shadow-glow"
+                  : "bg-white hover:bg-secondary text-foreground hover:text-primary-light border border-border"
               }`}
             >
               {category}
@@ -143,17 +158,23 @@ const Portfolio = () => {
                   className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-80 transition-opacity duration-300"></div>
-                
+
                 {/* Hover Actions */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="flex space-x-4">
-                    <button className="bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-smooth">
-                      <Eye className="w-5 h-5" />
-                    </button>
-                    <button className="bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-smooth">
+                    <button
+                      style={{ display: "none" }}
+                      className="bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-smooth"
+                    >
                       <Heart className="w-5 h-5" />
                     </button>
                     <button className="bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-smooth">
+                      <Eye className="w-5 h-5" />
+                    </button>
+                    <button
+                      style={{ display: "none" }}
+                      className="bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-smooth"
+                    >
                       <Share2 className="w-5 h-5" />
                     </button>
                   </div>
@@ -196,21 +217,21 @@ const Portfolio = () => {
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            
+
             <div className="flex space-x-2">
               {Array.from({ length: totalPages }, (_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrentPage(i)}
                   className={`w-3 h-3 rounded-full transition-smooth ${
-                    i === currentPage 
-                      ? 'bg-primary shadow-glow' 
-                      : 'bg-border hover:bg-accent'
+                    i === currentPage
+                      ? "bg-primary shadow-glow"
+                      : "bg-border hover:bg-accent"
                   }`}
                 />
               ))}
             </div>
-            
+
             <button
               onClick={nextPage}
               className="bg-white hover:bg-secondary text-foreground p-3 rounded-full shadow-card transition-smooth"
